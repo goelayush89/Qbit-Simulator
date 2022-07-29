@@ -6,7 +6,7 @@ const csrf = require("csurf");
 
 const csrfMiddleware = csrf({ cookie: true });
 
-const PORT = 3000
+const PORT = process.env.PORT || 5000;
 
 //Requiring Routes.
 const circuitRouter = require('./routes/circuit')
@@ -42,14 +42,14 @@ app.all("*", (req, res, next) => {
 });
 
 // Telling express to use Routes
-app.use('/',circuitRouter);
-app.use('/',cloudRouter);
-app.use('/',functionRouter);
-app.use('/',analysisRouter);
-app.use('/',exampleRouter);
-app.use('/',docRouter);
-app.use('/',hiwRouter);
-app.use('/',infoRouter);
+app.use('/', circuitRouter);
+app.use('/', cloudRouter);
+app.use('/', functionRouter);
+app.use('/', analysisRouter);
+app.use('/', exampleRouter);
+app.use('/', docRouter);
+app.use('/', hiwRouter);
+app.use('/', infoRouter);
 
 app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`)
